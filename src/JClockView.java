@@ -25,8 +25,6 @@ public abstract class JClockView extends JFrame {
         for (JChrono jChrono : jChronos)
             panel.add(jChrono);
 
-//        setSize(200, 200);
-
         if(jChronos.length == 1)
             setResizable(false);
 
