@@ -5,11 +5,13 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public abstract class JClockView extends JFrame {
+public abstract class JClockView {
+
+    protected JFrame frame = new JFrame();
 
     public JClockView(JChrono[] jChronos) {
 
-        addWindowListener(new WindowAdapter() {
+        frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 // Détache chaques chronomètres de leur chrono
@@ -20,16 +22,16 @@ public abstract class JClockView extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        getContentPane().add(panel);
+        frame.getContentPane().add(panel);
 
         for (JChrono jChrono : jChronos)
             panel.add(jChrono);
 
         if(jChronos.length == 1)
-            setResizable(false);
+            frame.setResizable(false);
 
-        setVisible(true);
-        pack();
+        frame.setVisible(true);
+        frame.pack();
     }
 
     public JClockView(JChrono jChrono) {
@@ -65,10 +67,10 @@ abstract class AnalogicClockView extends JClockView {
     public AnalogicClockView(JChrono jChrono) {
         super(jChrono);
 
-        addComponentListener(new ComponentAdapter() {
+        frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                jChrono.setSize(getContentPane().getSize());
+                jChrono.setSize(frame.getContentPane().getSize());
             }
         });
     }

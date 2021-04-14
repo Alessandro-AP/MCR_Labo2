@@ -56,10 +56,12 @@ public class Chrono extends Subject {
      * Permet de stopper le chrono et de supprimer la tâche
      */
     public void stop() {
-        timer.cancel();
-        timer.purge();
-        timer = null;
-        notifyObservators();
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+            notifyObservators();
+        }
     }
 
     /**
