@@ -1,3 +1,7 @@
+package clocks;
+
+import observatorModel.Chrono;
+
 import java.awt.*;
 
 public class NumericClock extends ClockPanel {

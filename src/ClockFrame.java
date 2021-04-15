@@ -1,3 +1,9 @@
+import clocks.ArabicClock;
+import clocks.ClockPanel;
+import clocks.NumericClock;
+import clocks.RomanClock;
+import observatorModel.Chrono;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -46,14 +52,14 @@ class MultipleClockFrame extends ClockFrame {
     public MultipleClockFrame(ClockPanel[] chronoList) {
         super(chronoList);
     }
-//	  super(new ClockPanel[]{},
-//	  super(new ClockPanel[]{new RomanChrono(chrono), new ArabicChrono(chrono), new NumericClock(chrono)},
+//	  super(new clocks.ClockPanel[]{},
+//	  super(new clocks.ClockPanel[]{new clocks.RomanClock(chrono), new clocks.ArabicClock(chrono), new clocks.NumericClock(chrono)},
 /*
-    ClockPanel[] init(LinkedList<Chrono> list){
-        RomanChrono[] romans = new RomanChrono[list.size()];
+    clocks.ClockPanel[] init(LinkedList<observatorModel.Chrono> list){
+        clocks.RomanClock[] romans = new clocks.RomanClock[list.size()];
         for (int i = 0; i < list.size(); ++i)
-            romans[i] = new RomanChrono(list.get(i));
-         ClockPanel[] jchrono = romans;
+            romans[i] = new clocks.RomanClock(list.get(i));
+         clocks.ClockPanel[] jchrono = romans;
         return jchrono;
     }*/
 }
@@ -79,7 +85,7 @@ abstract class AnalogicClockFrame extends ClockFrame {
  * Représente une vue avec le chronomètre Roman
  */
 class RomanClockFrame extends AnalogicClockFrame {
-    public RomanClockFrame(Chrono chrono) {super(new RomanChrono(chrono)); }
+    public RomanClockFrame(Chrono chrono) {super(new RomanClock(chrono)); }
 }
 
 /**
@@ -87,7 +93,7 @@ class RomanClockFrame extends AnalogicClockFrame {
  */
 class ArabicClockFrame extends AnalogicClockFrame {
     public ArabicClockFrame(Chrono chrono) {
-        super(new ArabicChrono(chrono));
+        super(new ArabicClock(chrono));
     }
 }
 

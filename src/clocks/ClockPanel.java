@@ -1,3 +1,8 @@
+package clocks;
+
+import observatorModel.Chrono;
+import observatorModel.Observator;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

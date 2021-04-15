@@ -1,3 +1,9 @@
+import clocks.ArabicClock;
+import clocks.ClockPanel;
+import clocks.NumericClock;
+import clocks.RomanClock;
+import observatorModel.Chrono;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
@@ -59,7 +65,7 @@ public class ControlPanel {
         ClockPanel[] romain = new ClockPanel[chronosList.size()];
 
         for(int i = 0; i < chronosList.size(); ++i)
-            romain[i] = new RomanChrono(chronosList.get(i));
+            romain[i] = new RomanClock(chronosList.get(i));
 
         final JButton rom = new JButton("Cadrans romains");
         lastPanel.add(rom);
@@ -68,7 +74,7 @@ public class ControlPanel {
         ClockPanel[] arabe = new ClockPanel[chronosList.size()];
 
         for(int i = 0; i < chronosList.size(); ++i)
-            arabe[i] = new ArabicChrono(chronosList.get(i));
+            arabe[i] = new ArabicClock(chronosList.get(i));
 
         final JButton mixte = new JButton("Cadrans arabes");
         lastPanel.add(mixte);
