@@ -20,7 +20,7 @@ public abstract class ClockFrame {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                // Détache chaques chronomètres de leur chrono
+                // Détache chaque chronomètre de leur chrono
                 for (ClockPanel clockPanel : clockPanels)
                     clockPanel.getChrono().detach(clockPanel);
             }
@@ -52,16 +52,6 @@ class MultipleClockFrame extends ClockFrame {
     public MultipleClockFrame(ClockPanel[] chronoList) {
         super(chronoList);
     }
-//	  super(new clocks.ClockPanel[]{},
-//	  super(new clocks.ClockPanel[]{new clocks.RomanClock(chrono), new clocks.ArabicClock(chrono), new clocks.NumericClock(chrono)},
-/*
-    clocks.ClockPanel[] init(LinkedList<observatorModel.Chrono> list){
-        clocks.RomanClock[] romans = new clocks.RomanClock[list.size()];
-        for (int i = 0; i < list.size(); ++i)
-            romans[i] = new clocks.RomanClock(list.get(i));
-         clocks.ClockPanel[] jchrono = romans;
-        return jchrono;
-    }*/
 }
 
 /**
@@ -72,13 +62,6 @@ abstract class AnalogicClockFrame extends ClockFrame {
 
     public AnalogicClockFrame(ClockPanel clockPanel) {
         super(clockPanel);
-
-        frame.addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                clockPanel.setSize(frame.getContentPane().getSize());
-            }
-        });
     }
 }
 /**

@@ -9,21 +9,21 @@ import java.awt.event.MouseEvent;
 
 public abstract class ClockPanel extends JPanel implements Observator {
 
-    protected Chrono chrono;
+    private Chrono chrono;
 
     public ClockPanel(Chrono chrono) {
+        this.chrono = chrono;
+        chrono.attach(this);
+
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 chrono.switchState();
             }
         });
-        this.chrono = chrono;
-        chrono.attach(this);
     }
 
-    /**
-     * @return le chrono
-     */
-    public Chrono getChrono() { return chrono; }
+    public Chrono getChrono() {
+        return chrono;
+    }
 }

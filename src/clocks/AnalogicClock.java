@@ -10,22 +10,49 @@ import java.io.IOException;
 
 public class AnalogicClock extends ClockPanel {
 
-    private int clockSize = 200;
+    private final int clockSize = 200;
     private Image img;
-    private Image originalImg; // Pour le rescale
+
 
     public AnalogicClock(Chrono chrono, String pathFile) {
         super(chrono);
         setLayout(new FlowLayout());
+        //setSize(new Dimension(clockSize, clockSize));
+        setPreferredSize(new Dimension(clockSize, clockSize));
 
-        // Lis l'image et la resize
+       // URL imgUrl = getClass().getResource(pathFile); // resource name here
+//        Image tmp = Toolkit.getDefaultToolkit().getImage(pathFile);
+
+//        Image tmp = Toolkit.getDefaultToolkit().getImage(pathFile);
+//        img = tmp.getScaledInstance(200, 200, Image.SCALE_FAST);
+
         try {
-            originalImg = ImageIO.read(new File(pathFile));
+            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         setSize(new Dimension(clockSize, clockSize));
+    }
+
+    /**
+     * Permet de dessiner une aiguille d'une horloge depuis le point [0,0]
+     *
+     * @param g2d      Sur quel graphics dessiner
+     * @param time   Le temps
+     * @param cycleDuration Sur combien de temps doit être compté le temps
+     * @param width  La largeur de l'aiguille
+     * @param length La longueur de l'aiguille
+     * @param color  La couleur de l'aiguille
+     */
+    private void drawNeedle(Graphics2D g2d, Color color, int length, int width, int time, int cycleDuration) {
+        g2d.setStroke(new BasicStroke(width));
+        g2d.setColor(color);
+        // position de la pointe de l'aiguille
+        double degree = 2.0 * Math.PI * time / cycleDuration;
+        int x2 = (int) (Math.sin(degree) * length);
+        int y2 = (int) (-1 * Math.cos(degree) * length);
+        g2d.drawLine(0, 0, x2, y2);
     }
 
     @Override
@@ -35,45 +62,16 @@ public class AnalogicClock extends ClockPanel {
     public void paint(Graphics g) {
         super.paint(g);
 
-        g.drawImage(img, 0, 0, null);
-        g.drawString("observatorModel.Chrono #" + chrono.getId(), 80, 120);
+        Graphics2D g2d = (Graphics2D) g;
 
-        // On met le point [0,0] au centre de la montre
-        g.translate(clockSize / 2, clockSize / 2);
+        g2d.drawImage(img, 0, 0, null);
+        g2d.drawString("Chrono #" + getChrono().getId(), 80, 120);
 
-        Graphics2D gr = (Graphics2D) g;
-
-        // On dessine les aiguilles
-        int size = Math.min(clockSize, clockSize);
-        drawClockHand(gr, getChrono().getHour(), 12, 7, size / 7, Color.BLACK);
-        drawClockHand(gr, getChrono().getMin(), 60, 5, size / 5, Color.BLUE);
-        drawClockHand(gr, getChrono().getSec(), 60, 3, size / 3, Color.RED);
+        // centralise l'origine
+        g2d.translate(clockSize / 2, clockSize / 2);
+        drawNeedle(g2d, Color.RED, 75, 2, getChrono().getSecondes(), 60);
+        drawNeedle(g2d, Color.BLUE, 55, 3, getChrono().getMinutes(), 60);
+        drawNeedle(g2d, Color.BLACK, 30, 4, getChrono().getHour(), 12);
     }
-
-    /**
-     * Permet de dessiner une aiguille d'une horloge depuis le point [0,0]
-     *
-     * @param g      Sur quel graphics dessiner
-     * @param time   Le temps
-     * @param max    Sur combien de temps doit être compté le temps
-     * @param width  La largeur de l'aiguille
-     * @param length La longueur de l'aiguille
-     * @param color  La couleur de l'aiguille
-     */
-    private void drawClockHand(Graphics2D g, double time, int max, int width, int length, Color color) {
-        double angle = (time / max) * 2 * Math.PI;
-        g.setStroke(new BasicStroke(width));
-        g.setColor(color);
-        g.drawLine(0, 0, (int) (Math.sin(angle) * length), (int) (-Math.cos(angle) * length));
-    }
-
-    @Override
-    public void setSize(Dimension d) {
-        super.setSize(d);
-        setPreferredSize(d);
-        clockSize = (int) Math.min(d.getHeight(), d.getWidth());
-        img = originalImg.getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
-    }
-
 }
 

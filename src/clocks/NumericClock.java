@@ -4,14 +4,17 @@ import observatorModel.Chrono;
 
 import java.awt.*;
 
+// TODO: mouselistener
+
 public class NumericClock extends ClockPanel {
 
-    private Label label = new Label();
+    private final Label label = new Label();
 
     public NumericClock(Chrono chrono) {
         super(chrono);
-
-        add(label, BorderLayout.CENTER);
+        setPreferredSize(new Dimension(200, 200));
+        setLayout(new GridBagLayout());
+        add(label);
         update();
     }
 
