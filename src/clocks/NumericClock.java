@@ -4,15 +4,13 @@ import observatorModel.Chrono;
 
 import java.awt.*;
 
-// TODO: mouselistener
-
 public class NumericClock extends ClockPanel {
 
     private final Label label = new Label();
+    private final int id = getChrono().getId();
 
     public NumericClock(Chrono chrono) {
         super(chrono);
-        setPreferredSize(new Dimension(200, 200));
         setLayout(new GridBagLayout());
         add(label);
         update();
@@ -20,7 +18,7 @@ public class NumericClock extends ClockPanel {
 
     @Override
     public void update() {
-        label.setText("Chrono #" + getChrono().getId() + " " +
+        label.setText("Chrono #" + id + ": " +
                 String.format("%02d", getChrono().getHours()) + "h " +
                 String.format("%02d", getChrono().getMinutes()) + "m " +
                 String.format("%02d", getChrono().getSecondes()) + "s");

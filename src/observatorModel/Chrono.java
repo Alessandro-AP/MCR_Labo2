@@ -55,8 +55,10 @@ public class Chrono extends Subject {
      * Permute entre l'état stop et start
      */
     public void changeState() {
-        if (timer == null) start();
-        else stop();
+        if (timer == null)
+            start();
+        else
+            stop();
     }
 
     /**

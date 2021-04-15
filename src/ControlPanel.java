@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 public class ControlPanel {
 
-
     public ControlPanel(int nbClock) {
 
         JFrame frame = new JFrame();
@@ -28,66 +27,53 @@ public class ControlPanel {
             JPanel clockCreator = new JPanel();
             mainPanel.add(clockCreator);
 
-            final JLabel label = new JLabel("Chrono #" + i);
-            clockCreator.add(label);
+            clockCreator.add(new JLabel("Chrono #" + i));
 
-            final JButton start = new JButton("Démarrer");
-            clockCreator.add(start);
-            start.addActionListener(new ActionListener() {
+            addButton("Démarrer", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chrono.start();
                 }
             });
 
-            final JButton stop = new JButton("Arreter");
-            clockCreator.add(stop);
-            stop.addActionListener(new ActionListener() {
+            addButton("Arreter", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chrono.stop();
                 }
             });
 
-            final JButton reset = new JButton("Réinitialiser");
-            clockCreator.add(reset);
-            reset.addActionListener(new ActionListener() {
+            addButton("Réinitialiser", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chrono.reset();
                 }
             });
 
-            final JButton cadranRomain = new JButton("Cadran romain");
-            clockCreator.add(cadranRomain);
-            cadranRomain.addActionListener(new ActionListener() {
+            addButton("Cadran romain", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     new RomanClockFrame(chrono);
                 }
             });
 
-            final JButton cadranArabe = new JButton("Cadran arabe");
-            clockCreator.add(cadranArabe);
-            cadranArabe.addActionListener(new ActionListener() {
+            addButton("Cadran arabe", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     new ArabicClockFrame(chrono);
                 }
             });
 
-            final JButton numerique = new JButton("Numérique");
-            clockCreator.add(numerique);
-            numerique.addActionListener(new ActionListener() {
+            addButton("Numérique", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     new DigitalClockFrame(chrono);
                 }
             });
-
         }
 
         JPanel lastPanel = new JPanel();
+        lastPanel.add(new JLabel("Tous les chronos"));
 
         ClockPanel[] romanClocks = new ClockPanel[chronosList.size()];
         ClockPanel[] arabicClocks = new ClockPanel[chronosList.size()];
@@ -99,36 +85,37 @@ public class ControlPanel {
             numericClocks[i] = new NumericClock(chronosList.get(i));
         }
 
-        final JButton cadransRomains = new JButton("Cadrans romains");
-        lastPanel.add(cadransRomains);
-        cadransRomains.addActionListener(new ActionListener() {
+        addButton("Cadrans romains", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MultipleClockFrame(romanClocks);
             }
         });
 
-        final JButton cadransArabes = new JButton("Cadrans arabes");
-        lastPanel.add(cadransArabes);
-        cadransArabes.addActionListener(new ActionListener() {
+        addButton("Cadrans arabes", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MultipleClockFrame(arabicClocks);
             }
         });
 
-        final JButton cadransNumeriques = new JButton("Numériques");
-        lastPanel.add(cadransNumeriques);
-        cadransNumeriques.addActionListener(new ActionListener() {
+        addButton("Numériques", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MultipleClockFrame(numericClocks);
             }
         });
 
+
         mainPanel.add(lastPanel);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void addButton(String name, JPanel toPanel, ActionListener actionListener) {
+        final JButton button = new JButton(name);
+        toPanel.add(button);
+        button.addActionListener(actionListener);
     }
 
 }

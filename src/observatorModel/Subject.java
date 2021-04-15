@@ -4,24 +4,24 @@ import java.util.LinkedList;
 
 public abstract class Subject {
 
-    private final LinkedList<Observator> observators = new LinkedList<>();
+    private final LinkedList<MyObserver> observers = new LinkedList<>();
 
     /**
      * Attache un observateur
-     * @param observator L'observateur
+     * @param observer L'observateur
      */
-    public void attach(Observator observator) {
-        if (observator == null)
-            throw new RuntimeException("Observator is null");
-        observators.push(observator);
+    public void addObserver(MyObserver observer) {
+        if (observer == null)
+            throw new RuntimeException("MyObserver is null");
+        observers.push(observer);
     }
 
     /**
      * Détache un observateur
-     * @param observator L'observateur
+     * @param observer L'observateur
      */
-    public void detach(Observator observator) {
-        observators.remove(observator);
+    public void deleteObserver(MyObserver observer) {
+        observers.remove(observer);
     }
 
 
@@ -29,7 +29,7 @@ public abstract class Subject {
      * Notifie tous les observateurs
      */
     public void notifyObservators() {
-        for (Observator observator : observators)
-            observator.update();
+        for (MyObserver observer : observers)
+            observer.update();
     }
 }

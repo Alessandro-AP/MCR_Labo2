@@ -1,6 +1,6 @@
 package observatorModel;
 
-public interface Observator {
+public interface MyObserver {
     /**
      * Mis à jour de l'observateur
      */

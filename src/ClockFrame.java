@@ -6,8 +6,6 @@ import observatorModel.Chrono;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -22,7 +20,7 @@ public abstract class ClockFrame {
             public void windowClosing(WindowEvent e) {
                 // Détache chaque chronomètre de leur chrono
                 for (ClockPanel clockPanel : clockPanels)
-                    clockPanel.getChrono().detach(clockPanel);
+                    clockPanel.getChrono().deleteObserver(clockPanel);
             }
         });
 
