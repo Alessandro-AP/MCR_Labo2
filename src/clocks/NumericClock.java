@@ -20,9 +20,9 @@ public class NumericClock extends ClockPanel {
 
     @Override
     public void update() {
-        String secondes = String.format("%02d", (int) getChrono().getSec());
-        String minutes = String.format("%02d", (int) getChrono().getMin());
-        String hours = String.format("%02d", (int) getChrono().getHour());
-        label.setText(hours + "h " + minutes + "m " + secondes + "s");
+        label.setText("Chrono #" + getChrono().getId() + " " +
+                String.format("%02d", getChrono().getHours()) + "h " +
+                String.format("%02d", getChrono().getMinutes()) + "m " +
+                String.format("%02d", getChrono().getSecondes()) + "s");
     }
 }

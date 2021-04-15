@@ -13,7 +13,6 @@ public class AnalogicClock extends ClockPanel {
     private final int clockSize = 200;
     private Image img;
 
-
     public AnalogicClock(Chrono chrono, String pathFile) {
         super(chrono);
         setLayout(new FlowLayout());
@@ -27,12 +26,10 @@ public class AnalogicClock extends ClockPanel {
 //        img = tmp.getScaledInstance(200, 200, Image.SCALE_FAST);
 
         try {
-            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);;
+            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        setSize(new Dimension(clockSize, clockSize));
     }
 
     /**
@@ -71,7 +68,7 @@ public class AnalogicClock extends ClockPanel {
         g2d.translate(clockSize / 2, clockSize / 2);
         drawNeedle(g2d, Color.RED, 75, 2, getChrono().getSecondes(), 60);
         drawNeedle(g2d, Color.BLUE, 55, 3, getChrono().getMinutes(), 60);
-        drawNeedle(g2d, Color.BLACK, 30, 4, getChrono().getHour(), 12);
+        drawNeedle(g2d, Color.BLACK, 30, 4, getChrono().getHours(), 12);
     }
 }
 

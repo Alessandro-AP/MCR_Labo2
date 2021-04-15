@@ -3,23 +3,25 @@ package observatorModel;
 import java.util.LinkedList;
 
 public abstract class Subject {
-    private LinkedList<Observator> observators = new LinkedList<>();
+
+    private final LinkedList<Observator> observators = new LinkedList<>();
 
     /**
      * Attache un observateur
-     * @param o L'observateur
+     * @param observator L'observateur
      */
-    public void attach(Observator o) {
-        if (o == null) throw new RuntimeException("observatorModel.Observator is null");
-        observators.push(o);
+    public void attach(Observator observator) {
+        if (observator == null)
+            throw new RuntimeException("Observator is null");
+        observators.push(observator);
     }
 
     /**
      * Détache un observateur
-     * @param o L'observateur
+     * @param observator L'observateur
      */
-    public void detach(Observator o) {
-        observators.remove(o);
+    public void detach(Observator observator) {
+        observators.remove(observator);
     }
 
 
@@ -27,7 +29,7 @@ public abstract class Subject {
      * Notifie tous les observateurs
      */
     public void notifyObservators() {
-        for (Observator o : observators)
-            o.update();
+        for (Observator observator : observators)
+            observator.update();
     }
 }

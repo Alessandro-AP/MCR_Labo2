@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public abstract class ClockPanel extends JPanel implements Observator {
 
-    private Chrono chrono;
+    private final Chrono chrono;
 
     public ClockPanel(Chrono chrono) {
         this.chrono = chrono;
@@ -18,7 +18,7 @@ public abstract class ClockPanel extends JPanel implements Observator {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                chrono.switchState();
+                chrono.changeState();
             }
         });
     }

@@ -4,29 +4,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Chrono extends Subject {
+
     private Timer timer;
-    private long time;
-    private int id;
+    private int time;
+    private final int id;
 
-    public Chrono(int id ) { timer   = null;
-                             this.id = id;
-    }
-
-    /**
-     * @return le temps en heure
-     */
-    public double getHour() { return (double) time / 60 / 60 % 24; }
-
-    /**
-     * @return le temps en minute
-     */
-    public double getMin() { return (double) time / 60 % 60; }
-
-    /**
-     * @return le temps en seconde
-     */
-    public double getSec() {
-        return time % 60;
+    public Chrono(int id) {
+        timer   = null;
+        this.id = id;
     }
 
     /**
@@ -69,12 +54,34 @@ public class Chrono extends Subject {
     /**
      * Permute entre l'état stop et start
      */
-    public void switchState() {
+    public void changeState() {
         if (timer == null) start();
         else stop();
     }
 
+    /**
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
+
+    /**
+     * @return le temps en heure
+     */
+    public int getHours() { return (time / 3600) % 24; }
+
+    /**
+     * @return le temps en minute
+     */
+    public int getMinutes() { return (time / 60) % 60; }
+
+    /**
+     * @return le temps en seconde
+     */
+    public int getSecondes() {
+        return time % 60;
+    }
+
 }
