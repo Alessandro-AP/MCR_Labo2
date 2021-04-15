@@ -2,10 +2,7 @@ package clocks;
 
 import observatorModel.Chrono;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 
 public class AnalogicClock extends ClockPanel {
@@ -16,11 +13,7 @@ public class AnalogicClock extends ClockPanel {
         super(chrono);
         setLayout(new FlowLayout());
 
-       // URL imgUrl = getClass().getResource(pathFile); // resource name here
-//        Image tmp = Toolkit.getDefaultToolkit().getImage(pathFile);
-
-        Image tmp = Toolkit.getDefaultToolkit().getImage(pathFile);
-        img = tmp.getScaledInstance(200, 200, Image.SCALE_FAST);
+        img = Toolkit.getDefaultToolkit().getImage(pathFile).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
 
 //        try {
 //            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);

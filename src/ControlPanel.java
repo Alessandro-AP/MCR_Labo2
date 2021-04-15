@@ -1,7 +1,4 @@
-import clocks.ArabicClock;
-import clocks.ClockPanel;
-import clocks.NumericClock;
-import clocks.RomanClock;
+import clocks.*;
 import observatorModel.Chrono;
 
 import javax.swing.*;
@@ -53,21 +50,21 @@ public class ControlPanel {
             addButton("Cadran romain", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new RomanClockFrame(chrono);
+                    new ClockFrame(new RomanClock(chrono));
                 }
             });
 
             addButton("Cadran arabe", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new ArabicClockFrame(chrono);
+                    new ClockFrame(new ArabicClock(chrono));
                 }
             });
 
             addButton("Numérique", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new DigitalClockFrame(chrono);
+                    new ClockFrame(new NumericClock(chrono));
                 }
             });
         }
@@ -88,21 +85,21 @@ public class ControlPanel {
         addButton("Cadrans romains", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MultipleClockFrame(romanClocks);
+                new ClockFrame(romanClocks);
             }
         });
 
         addButton("Cadrans arabes", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MultipleClockFrame(arabicClocks);
+                new ClockFrame(arabicClocks);
             }
         });
 
         addButton("Numériques", lastPanel, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MultipleClockFrame(numericClocks);
+                new ClockFrame(numericClocks);
             }
         });
 
