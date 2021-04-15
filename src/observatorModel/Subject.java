@@ -2,31 +2,37 @@ package observatorModel;
 
 import java.util.LinkedList;
 
+/**
+ * Classe abstraite représentant un sujet du model Observateur
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * Created on 15.04.21
+ */
 public abstract class Subject {
 
     private final LinkedList<MyObserver> observers = new LinkedList<>();
 
     /**
-     * Attache un observateur
+     * Ajoute un observateur au sujet
      * @param observer L'observateur
      */
     public void addObserver(MyObserver observer) {
         if (observer == null)
-            throw new RuntimeException("MyObserver is null");
+            throw new RuntimeException("Observer is null");
         observers.push(observer);
     }
 
     /**
-     * Détache un observateur
+     * Enlève un observateur du sujet
      * @param observer L'observateur
      */
     public void deleteObserver(MyObserver observer) {
         observers.remove(observer);
     }
 
-
     /**
-     * Notifie tous les observateurs
+     * Notifie tous les observateurs liés au sujet
      */
     public void notifyObservators() {
         for (MyObserver observer : observers)

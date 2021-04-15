@@ -19,8 +19,7 @@ public class ClockFrame {
             }
         });
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new FlowLayout());
+        JPanel panel = new JPanel(new FlowLayout());
         frame.add(panel);
 
         for (ClockPanel clockPanel : clockPanels)
@@ -29,8 +28,8 @@ public class ClockFrame {
         if(clockPanels.length == 1)
             frame.setResizable(false);
 
-        frame.setVisible(true);
         frame.pack();
+        frame.setVisible(true);
     }
 
     public ClockFrame(ClockPanel clockPanel) {

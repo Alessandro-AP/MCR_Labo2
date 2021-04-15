@@ -1,6 +1,6 @@
 package clocks;
 
-import observatorModel.Chrono;
+import chrono.Chrono;
 
 /**
  * Représente un chrono avec des chiffres romains

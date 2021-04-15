@@ -1,14 +1,24 @@
 package clocks;
 
-import observatorModel.Chrono;
-
+import chrono.Chrono;
 import java.awt.*;
 
-
-public class AnalogicClock extends ClockPanel {
+/**
+ * Classe abstraite représentant une horloge analogique
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * Created on 15.04.21
+ */
+public abstract class AnalogicClock extends ClockPanel {
 
     private final Image img;
 
+    /**
+     * Constructeur
+     * @param chrono Chrono associé à la clock
+     * @param pathFile Chemin de l'image du cadran de la clock
+     */
     public AnalogicClock(Chrono chrono, String pathFile) {
         super(chrono);
         setLayout(new FlowLayout());
@@ -23,14 +33,13 @@ public class AnalogicClock extends ClockPanel {
     }
 
     /**
-     * Permet de dessiner une aiguille d'une horloge depuis le point [0,0]
-     *
-     * @param g2d      Sur quel graphics dessiner
-     * @param time   Le temps
-     * @param cycleDuration Sur combien de temps doit être compté le temps
-     * @param thickness  La largeur de l'aiguille
-     * @param length La longueur de l'aiguille
-     * @param color  La couleur de l'aiguille
+     * Dessine une aiguille sur la clock
+     * @param g2d Graphics sur lequel dessiner
+     * @param time Heure de la clock
+     * @param cycleDuration Cycle entier des heures (24) ou minutes/secondes (60)
+     * @param thickness Épaisseur de l'aiguille
+     * @param length Longueur de l'aiguille
+     * @param color Couleur de l'aiguille
      */
     private void drawNeedle(Graphics2D g2d, Color color, int length, int thickness, int time, int cycleDuration) {
         g2d.setColor(color);

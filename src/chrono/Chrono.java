@@ -1,4 +1,6 @@
-package observatorModel;
+package chrono;
+
+import observatorModel.Subject;
 
 import java.util.Timer;
 import java.util.TimerTask;

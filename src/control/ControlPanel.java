@@ -1,22 +1,26 @@
+package control;
+
+import chrono.Chrono;
 import clocks.*;
-import observatorModel.Chrono;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+
 public class ControlPanel {
 
     public ControlPanel(int nbClock) {
 
         JFrame frame = new JFrame();
-        LinkedList<Chrono> chronosList = new LinkedList<>();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(nbClock + 1, 1));
         frame.add(mainPanel);
+
+        LinkedList<Chrono> chronosList = new LinkedList<>();
 
         for (int i = 1; i <= nbClock; ++i) {
             Chrono chrono = new Chrono(i);

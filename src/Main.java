@@ -1,3 +1,13 @@
+import control.ControlPanel;
+
+/**
+ * Classe lançant le programme
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * Created on 15.04.21
+ * JDK version : 11
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -12,3 +22,5 @@ public class Main {
         new ControlPanel(nbChrono);
     }
 }
+
+// TODO : vérifier si possible de dessiner image tout de suite et voir si possible de fixer bug instance multiple de clocks
