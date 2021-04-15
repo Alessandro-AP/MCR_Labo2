@@ -3,7 +3,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class AnalogicChrono extends JChrono {
+public class AnalogicChrono extends ClockPanel {
 
     private int clockSize = 200;
     private Image img;

@@ -38,15 +38,15 @@ public class ControlPanel {
 
             final JButton rom = new JButton("Cadran romain");
             clockCreator.add(rom);
-            rom.addActionListener(e -> new RomanClockView(chrono));
+            rom.addActionListener(e -> new RomanClockFrame(chrono));
 
             final JButton arab = new JButton("Cadran arabe");
             clockCreator.add(arab);
-            arab.addActionListener(e -> new ArabicClockView(chrono));
+            arab.addActionListener(e -> new ArabicClockFrame(chrono));
 
             final JButton num = new JButton("Numérique");
             clockCreator.add(num);
-            num.addActionListener(e -> new DigitalClockView(chrono));
+            num.addActionListener(e -> new DigitalClockFrame(chrono));
 
 //            final JButton mixte = new JButton("Horloge mixte");
 //            clockCreator.add(mixte);
@@ -56,47 +56,47 @@ public class ControlPanel {
         }
         JPanel lastPanel = new JPanel();
 
-        JChrono[] romain = new JChrono[chronosList.size()];
+        ClockPanel[] romain = new ClockPanel[chronosList.size()];
 
         for(int i = 0; i < chronosList.size(); ++i)
             romain[i] = new RomanChrono(chronosList.get(i));
 
         final JButton rom = new JButton("Cadrans romains");
         lastPanel.add(rom);
-        rom.addActionListener(e -> new MultipleClockView(romain));
+        rom.addActionListener(e -> new MultipleClockFrame(romain));
 
-        JChrono[] arabe = new JChrono[chronosList.size()];
+        ClockPanel[] arabe = new ClockPanel[chronosList.size()];
 
         for(int i = 0; i < chronosList.size(); ++i)
             arabe[i] = new ArabicChrono(chronosList.get(i));
 
         final JButton mixte = new JButton("Cadrans arabes");
         lastPanel.add(mixte);
-        mixte.addActionListener(e -> new MultipleClockView(arabe));
+        mixte.addActionListener(e -> new MultipleClockFrame(arabe));
 
-        JChrono[] numerique = new JChrono[chronosList.size()];
+        ClockPanel[] numerique = new ClockPanel[chronosList.size()];
 
         for(int i = 0; i < chronosList.size(); ++i)
-            numerique[i] = new DigitalChrono(chronosList.get(i));
+            numerique[i] = new NumericClock(chronosList.get(i));
 
         final JButton dig = new JButton("Numériques");
         lastPanel.add(dig);
-        dig.addActionListener(e -> new MultipleClockView(numerique));
+        dig.addActionListener(e -> new MultipleClockFrame(numerique));
 
 /*
         final JButton rom = new JButton("Cadran romain");
         lastPanel.add(rom);
         rom.addActionListener(e -> {
-            new RomanClockView(chrono);
+            new RomanClockFrame(chrono);
         });
 
         final JButton arab = new JButton("Cadran arabe");
         lastPanel.add(arab);
-        arab.addActionListener(e -> new ArabicClockView(chrono));
+        arab.addActionListener(e -> new ArabicClockFrame(chrono));
 
         final JButton num = new JButton("Numérique");
         lastPanel.add(num);
-        num.addActionListener(e -> new DigitalClockView(chrono));*/
+        num.addActionListener(e -> new DigitalClockFrame(chrono));*/
         mainPanel.add(lastPanel);
 
 

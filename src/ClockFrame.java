@@ -5,55 +5,55 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public abstract class JClockView {
+public abstract class ClockFrame {
 
     protected JFrame frame = new JFrame();
 
-    public JClockView(JChrono[] jChronos) {
+    public ClockFrame(ClockPanel[] clockPanels) {
 
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 // Détache chaques chronomètres de leur chrono
-                for (JChrono jChrono : jChronos)
-                    jChrono.getChrono().detach(jChrono);
+                for (ClockPanel clockPanel : clockPanels)
+                    clockPanel.getChrono().detach(clockPanel);
             }
         });
 
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        frame.getContentPane().add(panel);
+        frame.add(panel);
 
-        for (JChrono jChrono : jChronos)
-            panel.add(jChrono);
+        for (ClockPanel clockPanel : clockPanels)
+            panel.add(clockPanel);
 
-        if(jChronos.length == 1)
+        if(clockPanels.length == 1)
             frame.setResizable(false);
 
         frame.setVisible(true);
         frame.pack();
     }
 
-    public JClockView(JChrono jChrono) {
-        this(new JChrono[]{jChrono});
+    public ClockFrame(ClockPanel clockPanel) {
+        this(new ClockPanel[]{clockPanel});
     }
 }
 
 /**
  * Représente une vue avec les chronomètres Roman, Arabic et Digital
  */
-class MultipleClockView extends JClockView {
-    public MultipleClockView(JChrono[] chronoList) {
+class MultipleClockFrame extends ClockFrame {
+    public MultipleClockFrame(ClockPanel[] chronoList) {
         super(chronoList);
     }
-//	  super(new JChrono[]{},
-//	  super(new JChrono[]{new RomanChrono(chrono), new ArabicChrono(chrono), new DigitalChrono(chrono)},
+//	  super(new ClockPanel[]{},
+//	  super(new ClockPanel[]{new RomanChrono(chrono), new ArabicChrono(chrono), new NumericClock(chrono)},
 /*
-    JChrono[] init(LinkedList<Chrono> list){
+    ClockPanel[] init(LinkedList<Chrono> list){
         RomanChrono[] romans = new RomanChrono[list.size()];
         for (int i = 0; i < list.size(); ++i)
             romans[i] = new RomanChrono(list.get(i));
-         JChrono[] jchrono = romans;
+         ClockPanel[] jchrono = romans;
         return jchrono;
     }*/
 }
@@ -62,15 +62,15 @@ class MultipleClockView extends JClockView {
  * Représente une vue avec un chronomètre analogique
  */
 
-abstract class AnalogicClockView extends JClockView {
+abstract class AnalogicClockFrame extends ClockFrame {
 
-    public AnalogicClockView(JChrono jChrono) {
-        super(jChrono);
+    public AnalogicClockFrame(ClockPanel clockPanel) {
+        super(clockPanel);
 
         frame.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                jChrono.setSize(frame.getContentPane().getSize());
+                clockPanel.setSize(frame.getContentPane().getSize());
             }
         });
     }
@@ -78,15 +78,15 @@ abstract class AnalogicClockView extends JClockView {
 /**
  * Représente une vue avec le chronomètre Roman
  */
-class RomanClockView extends AnalogicClockView {
-    public RomanClockView(Chrono chrono) {super(new RomanChrono(chrono)); }
+class RomanClockFrame extends AnalogicClockFrame {
+    public RomanClockFrame(Chrono chrono) {super(new RomanChrono(chrono)); }
 }
 
 /**
  * Représente une vue avec le chronomètre Arabic
  */
-class ArabicClockView extends AnalogicClockView {
-    public ArabicClockView(Chrono chrono) {
+class ArabicClockFrame extends AnalogicClockFrame {
+    public ArabicClockFrame(Chrono chrono) {
         super(new ArabicChrono(chrono));
     }
 }
@@ -94,8 +94,8 @@ class ArabicClockView extends AnalogicClockView {
 /**
  * Représente une vue avec le chronomètre Digital
  */
-class DigitalClockView extends JClockView {
-    public DigitalClockView(Chrono chrono) {
-        super(new DigitalChrono(chrono));
+class DigitalClockFrame extends ClockFrame {
+    public DigitalClockFrame(Chrono chrono) {
+        super(new NumericClock(chrono));
     }
 }
