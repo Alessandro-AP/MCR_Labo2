@@ -13,7 +13,7 @@ public abstract class ClockPanel extends JPanel implements MyObserver {
     protected final int clockSize = 200;
     private final Chrono chrono;
 
-    public ClockPanel(Chrono chrono) {
+    protected ClockPanel(Chrono chrono) {
         this.chrono = chrono;
         chrono.addObserver(this);
 

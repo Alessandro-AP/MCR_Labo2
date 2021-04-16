@@ -19,17 +19,16 @@ public class ClockFrame {
             }
         });
 
-        JPanel panel = new JPanel(new FlowLayout());
-        frame.add(panel);
+        frame.setLayout(new FlowLayout());
 
         for (ClockPanel clockPanel : clockPanels)
-            panel.add(clockPanel);
+            frame.add(clockPanel);
 
         if(clockPanels.length == 1)
             frame.setResizable(false);
 
-        frame.pack();
         frame.setVisible(true);
+        frame.pack();
     }
 
     public ClockFrame(ClockPanel clockPanel) {

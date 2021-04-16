@@ -19,7 +19,7 @@ public class Main {
         if (nbChrono < 1 || nbChrono > 9)
             throw new IllegalArgumentException("Choose between 1 and 9 chronos");
 
-        new ControlPanel(nbChrono);
+        ControlPanel.getInstance(nbChrono);
     }
 }
 

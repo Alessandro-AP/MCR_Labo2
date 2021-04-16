@@ -1,7 +1,11 @@
 package clocks;
 
 import chrono.Chrono;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Classe abstraite représentant une horloge analogique
@@ -12,24 +16,25 @@ import java.awt.*;
  */
 public abstract class AnalogicClock extends ClockPanel {
 
-    private final Image img;
+    private Image img;
 
     /**
      * Constructeur
      * @param chrono Chrono associé à la clock
      * @param pathFile Chemin de l'image du cadran de la clock
      */
-    public AnalogicClock(Chrono chrono, String pathFile) {
+    protected AnalogicClock(Chrono chrono, String pathFile) {
         super(chrono);
         setLayout(new FlowLayout());
 
-        img = Toolkit.getDefaultToolkit().getImage(pathFile).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
+//        img = Toolkit.getDefaultToolkit().getImage(pathFile).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
+//        repaint();
 
-//        try {
-//            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -55,8 +60,8 @@ public abstract class AnalogicClock extends ClockPanel {
     public void update() { repaint(); }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
 
