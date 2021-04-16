@@ -98,6 +98,9 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ClockFrame(romanClocks);
+                for(int i = 0; i < chronosList.size(); ++i)
+                    romanClocks[i] = new RomanClock(chronosList.get(i));
+
             }
         });
 
@@ -105,6 +108,9 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ClockFrame(arabicClocks);
+                for(int i = 0; i < chronosList.size(); ++i)
+                    arabicClocks[i] = new ArabicClock(chronosList.get(i));
+
             }
         });
 
@@ -112,6 +118,9 @@ public class ControlPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ClockFrame(numericClocks);
+                for(int i = 0; i < chronosList.size(); ++i)
+                    numericClocks[i] = new NumericClock(chronosList.get(i));
+
             }
         });
 
