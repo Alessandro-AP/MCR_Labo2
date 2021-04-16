@@ -2,11 +2,12 @@ package clocks;
 
 import chrono.Chrono;
 
-import java.awt.*;
+import javax.swing.JLabel;
+import java.awt.GridBagLayout;
 
 public class NumericClock extends ClockPanel {
 
-    private final Label label = new Label();
+    private final JLabel label = new JLabel();
     private final int id = getChrono().getId();
 
     public NumericClock(Chrono chrono) {

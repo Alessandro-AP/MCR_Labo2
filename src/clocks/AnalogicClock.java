@@ -3,7 +3,12 @@ package clocks;
 import chrono.Chrono;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Image;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.BasicStroke;
 import java.io.File;
 import java.io.IOException;
 
