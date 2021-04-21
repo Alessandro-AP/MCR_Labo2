@@ -5,8 +5,19 @@ import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+/**
+ * Classe représentant une fenêtre d'une horloge
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * @version 1.0.0
+ * Created on 22.04.21
+ */
 public class ClockFrame {
-
+    /**
+     * Constructeur
+     * @param clockPanels Panneaux à ajouter à la fenêtre
+     */
     public ClockFrame(ClockPanel[] clockPanels) {
 
         JFrame frame = new JFrame();
@@ -31,6 +42,10 @@ public class ClockFrame {
         frame.pack();
     }
 
+    /**
+     * Constructeur
+     * @param clockPanel Panneau à ajouter à la fenêtre
+     */
     public ClockFrame(ClockPanel clockPanel) {
         this(new ClockPanel[]{clockPanel});
     }

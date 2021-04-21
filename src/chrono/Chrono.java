@@ -5,19 +5,31 @@ import observatorModel.Subject;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Classe représentant un chronomètre
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * @version 1.0.0
+ * Created on 22.04.21
+ */
 public class Chrono extends Subject {
 
     private Timer timer;
     private int time;
     private final int id;
 
+    /**
+     * Constructeur
+     * @param id ID du chronomètre
+     */
     public Chrono(int id) {
         timer   = null;
         this.id = id;
     }
 
     /**
-     * Pour démarrer le chrono
+     * Démarre le chronomètre et notifie les observateurs
      */
     public void start() {
         if (timer == null) {
@@ -34,7 +46,7 @@ public class Chrono extends Subject {
     }
 
     /**
-     * Permet de reset le chrono et de remettre le temps à 0
+     * Reset le chronomètre en remettant le temps à 0 et notifie les observateurs
      */
     public void reset() {
         time = 0;
@@ -42,7 +54,7 @@ public class Chrono extends Subject {
     }
 
     /**
-     * Permet de stopper le chrono et de supprimer la tâche
+     * Stoppe le chronomètre, supprime la tâche et notifie les observateurs
      */
     public void stop() {
         if (timer != null) {
@@ -54,7 +66,7 @@ public class Chrono extends Subject {
     }
 
     /**
-     * Permute entre l'état stop et start
+     * Passe de l'état stop à start et vice-versa
      */
     public void changeState() {
         if (timer == null)
@@ -64,25 +76,24 @@ public class Chrono extends Subject {
     }
 
     /**
-     *
-     * @return id
+     * @return l'id du chronomètre
      */
     public int getId() {
         return id;
     }
 
     /**
-     * @return le temps en heure
+     * @return le temps en heure du chronomètre
      */
     public int getHours() { return (time / 3600) % 24; }
 
     /**
-     * @return le temps en minute
+     * @return le temps en minute du chronomètre
      */
     public int getMinutes() { return (time / 60) % 60; }
 
     /**
-     * @return le temps en seconde
+     * @return le temps en seconde du chronomètre
      */
     public int getSecondes() {
         return time % 60;

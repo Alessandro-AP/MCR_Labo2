@@ -13,8 +13,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
+/**
+ * Classe représentant le panneau de contrôle gérant les horloges
+ *
+ * @author Alessandro Parrino
+ * @author Daniel Sciarra
+ * @version 1.0.0
+ * Created on 22.04.21
+ */
 public class ControlPanel {
-
+    /**
+     * Constructeur
+     * @param nbClock Nombre d'horloge contenues dans le panneau de contrôle
+     */
     public ControlPanel(int nbClock) {
 
         JFrame frame = new JFrame();
@@ -116,10 +127,15 @@ public class ControlPanel {
         frame.setVisible(true);
     }
 
+    /**
+     * Ajout d'un bouton sur le panneau de contrôle
+     * @param name Nom du bouton
+     * @param toPanel Panneau sur lequel ajouter le bouton
+     * @param actionListener ActionListener associé au bouton
+     */
     private void addButton(String name, JPanel toPanel, ActionListener actionListener) {
         final JButton button = new JButton(name);
         toPanel.add(button);
         button.addActionListener(actionListener);
     }
-
 }

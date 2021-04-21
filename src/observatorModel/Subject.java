@@ -7,7 +7,8 @@ import java.util.LinkedList;
  *
  * @author Alessandro Parrino
  * @author Daniel Sciarra
- * Created on 15.04.21
+ * @version 1.0.0
+ * Created on 22.04.21
  */
 public abstract class Subject {
 
@@ -15,7 +16,7 @@ public abstract class Subject {
 
     /**
      * Ajoute un observateur au sujet
-     * @param observer L'observateur
+     * @param observer L'observateur à ajouter
      */
     public void addObserver(MyObserver observer) {
         if (observer == null)
@@ -25,7 +26,7 @@ public abstract class Subject {
 
     /**
      * Enlève un observateur du sujet
-     * @param observer L'observateur
+     * @param observer L'observateur à enlever
      */
     public void deleteObserver(MyObserver observer) {
         observers.remove(observer);
