@@ -55,7 +55,7 @@ public class Chrono extends Subject {
     /**
      * Stoppe le chronomètre, supprime la tâche et notifie les observateurs
      */
-    public void stop() {
+    public void pause() {
         if (timer != null) {
             timer.cancel();
             timer.purge();
@@ -71,7 +71,7 @@ public class Chrono extends Subject {
         if (timer == null)
             start();
         else
-            stop();
+            pause();
     }
 
     /**

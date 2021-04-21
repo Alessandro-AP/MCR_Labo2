@@ -52,7 +52,7 @@ public class ControlPanel {
             addButton("Arreter", clockCreator, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    chrono.stop();
+                    chrono.pause();
                 }
             });
 
