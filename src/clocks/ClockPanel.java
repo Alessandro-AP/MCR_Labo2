@@ -15,7 +15,7 @@ public abstract class ClockPanel extends JPanel implements MyObserver {
 
     protected ClockPanel(Chrono chrono) {
         this.chrono = chrono;
-        chrono.addObserver(this);
+        this.chrono.addObserver(this);
 
         setPreferredSize(new Dimension(clockSize, clockSize));
 

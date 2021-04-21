@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.BasicStroke;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -26,20 +27,19 @@ public abstract class AnalogicClock extends ClockPanel {
     /**
      * Constructeur
      * @param chrono Chrono associé à la clock
-     * @param pathFile Chemin de l'image du cadran de la clock
+     * @param imageFilePath Chemin de l'image du cadran de la clock
      */
-    protected AnalogicClock(Chrono chrono, String pathFile) {
+    protected AnalogicClock(Chrono chrono, String imageFilePath) {
         super(chrono);
         setLayout(new FlowLayout());
 
-//        img = Toolkit.getDefaultToolkit().getImage(pathFile).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
-//        repaint();
+        img = Toolkit.getDefaultToolkit().getImage(imageFilePath).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
 
-        try {
-            img = ImageIO.read(new File(pathFile)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            img = ImageIO.read(new File(imageFilePath)).getScaledInstance(clockSize, clockSize, Image.SCALE_FAST);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -66,12 +66,11 @@ public abstract class AnalogicClock extends ClockPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
+//        System.out.println("paint");
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.drawImage(img, 0, 0, null);
-        g2d.drawString("Chrono #" + getChrono().getId(), 80, 120);
+        g2d.drawString("Chrono #" + getChrono().getId(), 75, 120);
 
         // centralise l'origine
         g2d.translate(clockSize / 2, clockSize / 2);
