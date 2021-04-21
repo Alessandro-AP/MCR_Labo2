@@ -7,9 +7,9 @@ import java.awt.event.WindowEvent;
 
 public class ClockFrame {
 
-    protected JFrame frame = new JFrame();
-
     public ClockFrame(ClockPanel[] clockPanels) {
+
+        JFrame frame = new JFrame();
 
         frame.addWindowListener(new WindowAdapter() {
             @Override

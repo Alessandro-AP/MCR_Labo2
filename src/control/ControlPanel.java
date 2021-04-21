@@ -15,15 +15,7 @@ import java.util.LinkedList;
 
 public class ControlPanel {
 
-    private static ControlPanel instance;
-
-    public static ControlPanel getInstance(int nbClock) {
-        if (instance == null)
-            instance = new ControlPanel(nbClock);
-        return instance;
-    }
-
-    private ControlPanel(int nbClock) {
+    public ControlPanel(int nbClock) {
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

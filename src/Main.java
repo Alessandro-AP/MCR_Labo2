@@ -19,8 +19,6 @@ public class Main {
         if (nbChrono < 1 || nbChrono > 9)
             throw new IllegalArgumentException("Choose between 1 and 9 chronos");
 
-        ControlPanel.getInstance(nbChrono);
+        new ControlPanel(nbChrono);
     }
 }
-
-// TODO : vérifier si possible de dessiner image tout de suite et voir si possible de fixer bug instance multiple de clocks
