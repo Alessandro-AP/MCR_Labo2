@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
  */
 public abstract class ClockPanel extends JPanel implements MyObserver {
 
-    protected final int clockSize = 200; // TODO Statique ?
+    protected static final int CLOCK_SIZE = 200;
     private final Chrono chrono;
 
     /**
@@ -29,7 +29,7 @@ public abstract class ClockPanel extends JPanel implements MyObserver {
         this.chrono = chrono;
         this.chrono.addObserver(this);
 
-        setPreferredSize(new Dimension(clockSize, clockSize));
+        setPreferredSize(new Dimension(CLOCK_SIZE, CLOCK_SIZE));
 
         addMouseListener(new MouseAdapter() {
             @Override

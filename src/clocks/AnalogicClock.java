@@ -39,8 +39,8 @@ public abstract class AnalogicClock extends ClockPanel {
     protected AnalogicClock(Chrono chrono, String imagePath) {
         super(chrono);
         setLayout(new FlowLayout());
-        img = Toolkit.getDefaultToolkit().getImage(imagePath).getScaledInstance(clockSize,
-                clockSize, Image.SCALE_FAST);
+        img = Toolkit.getDefaultToolkit().getImage(imagePath).getScaledInstance(CLOCK_SIZE,
+                CLOCK_SIZE, Image.SCALE_FAST);
     }
 
     /**
@@ -76,13 +76,13 @@ public abstract class AnalogicClock extends ClockPanel {
         g2d.drawString("Chrono #" + getChrono().getId(), X_POS_TITLE, Y_POS_TITLE);
 
         // centralise l'origine
-        g2d.translate(clockSize / 2, clockSize / 2);
+        g2d.translate(CLOCK_SIZE / 2, CLOCK_SIZE / 2);
 
-        drawNeedle(g2d, Color.RED, (int) (clockSize * 0.4), SECONDES_NEEDLE_THICKNESS,
+        drawNeedle(g2d, Color.RED, (int) (CLOCK_SIZE * 0.4), SECONDES_NEEDLE_THICKNESS,
                     getChrono().getSecondes(), MAX_MINUTES_SECONDES);
-        drawNeedle(g2d, Color.BLUE, (int) (clockSize * 0.3), MINUTES_NEEDLE_THICKNESS,
+        drawNeedle(g2d, Color.BLUE, (int) (CLOCK_SIZE * 0.3), MINUTES_NEEDLE_THICKNESS,
                     getChrono().getMinutes(), MAX_MINUTES_SECONDES);
-        drawNeedle(g2d, Color.BLACK, (int) (clockSize * 0.2), HOURS_NEEDLE_THICKNESS,
+        drawNeedle(g2d, Color.BLACK, (int) (CLOCK_SIZE * 0.2), HOURS_NEEDLE_THICKNESS,
                     getChrono().getHours(), MAX_HOURS);
     }
 }

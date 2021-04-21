@@ -11,11 +11,14 @@ import chrono.Chrono;
  * Created on 22.04.21
  */
 public class ArabicClock extends AnalogicClock {
+
+    private static final String IMAGE_PATH = "img/cadran_chiffres_arabes.jpg";
+
     /**
      * Constructeur
      * @param chrono Chronomètre associé à l'horloge
      */
     public ArabicClock(Chrono chrono) {
-        super(chrono, "img/cadran_chiffres_arabes.jpg");
+        super(chrono, IMAGE_PATH);
     }
 }
