@@ -35,94 +35,21 @@ public class ControlPanel {
         LinkedList<Chrono> chronosList = new LinkedList<>();
 
         for (int i = 1; i <= nbClock; ++i) {
+
             Chrono chrono = new Chrono(i);
             chronosList.add(chrono);
+
             JPanel clockCreator = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             frame.add(clockCreator);
 
             clockCreator.add(new JLabel("Chrono #" + i));
 
-            addButton("Démarrer", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    chrono.start();
-                }
-            });
+            addButtons(clockCreator, chrono);
 
-            addButton("Arreter", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    chrono.pause();
-                }
-            });
-
-            addButton("Réinitialiser", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    chrono.reset();
-                }
-            });
-
-            addButton("Cadran romain", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new ClockFrame(new RomanClock(chrono));
-                }
-            });
-
-            addButton("Cadran arabe", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new ClockFrame(new ArabicClock(chrono));
-                }
-            });
-
-            addButton("Numérique", clockCreator, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new ClockFrame(new NumericClock(chrono));
-                }
-            });
         }
 
-        JPanel lastPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        lastPanel.add(new JLabel("Tous les chronos"));
+        addBottomPanel(frame, chronosList, nbClock);
 
-        ClockPanel[] romanClocks = new ClockPanel[nbClock];
-        ClockPanel[] arabicClocks = new ClockPanel[nbClock];
-        ClockPanel[] numericClocks = new ClockPanel[nbClock];
-
-        addButton("Cadrans romains", lastPanel, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < nbClock; ++i)
-                    romanClocks[i] = new RomanClock(chronosList.get(i));
-
-                new ClockFrame(romanClocks);
-            }
-        });
-
-        addButton("Cadrans arabes", lastPanel, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < nbClock; ++i)
-                    arabicClocks[i] = new ArabicClock(chronosList.get(i));
-
-                new ClockFrame(arabicClocks);
-            }
-        });
-
-        addButton("Numériques", lastPanel, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for(int i = 0; i < nbClock; ++i)
-                    numericClocks[i] = new NumericClock(chronosList.get(i));
-
-                new ClockFrame(numericClocks);
-            }
-        });
-
-        frame.add(lastPanel);
         frame.pack();
         frame.setVisible(true);
     }
@@ -138,4 +65,103 @@ public class ControlPanel {
         toPanel.add(button);
         button.addActionListener(actionListener);
     }
+
+    /**
+     * Ajout de la ligne de boutons pour un chronomètre, au control panel
+     * @param clockCreator Panneau sur lequel ajouter le bouton
+     * @param chrono chronomètre associé aux boutons
+     */
+    private void addButtons(JPanel clockCreator, Chrono chrono){
+
+        addButton("Démarrer", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chrono.start();
+            }
+        });
+
+        addButton("Arreter", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chrono.pause();
+            }
+        });
+
+        addButton("Réinitialiser", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chrono.reset();
+            }
+        });
+
+        addButton("Cadran romain", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ClockFrame(new RomanClock(chrono));
+            }
+        });
+
+        addButton("Cadran arabe", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ClockFrame(new ArabicClock(chrono));
+            }
+        });
+
+        addButton("Numérique", clockCreator, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ClockFrame(new NumericClock(chrono));
+            }
+        });
+    }
+
+    /**
+     * Ajout de la dernier ligne de boutons au control panel
+     * @param mainFrame Fenêtre du control panel
+     * @param chronosList liste de chronomètres
+     * @param nbClock nombre de chronomètres
+     */
+    private void addBottomPanel(JFrame mainFrame, LinkedList<Chrono> chronosList, int nbClock){
+
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        bottomPanel.add(new JLabel("Tous les chronos"));
+
+        ClockPanel[] romanClocks = new ClockPanel[nbClock];
+        ClockPanel[] arabicClocks = new ClockPanel[nbClock];
+        ClockPanel[] numericClocks = new ClockPanel[nbClock];
+
+        addButton("Cadrans romains", bottomPanel, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < nbClock; ++i)
+                    romanClocks[i] = new RomanClock(chronosList.get(i));
+
+                new ClockFrame(romanClocks);
+            }
+        });
+
+        addButton("Cadrans arabes", bottomPanel, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < nbClock; ++i)
+                    arabicClocks[i] = new ArabicClock(chronosList.get(i));
+
+                new ClockFrame(arabicClocks);
+            }
+        });
+
+        addButton("Numériques", bottomPanel, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(int i = 0; i < nbClock; ++i)
+                    numericClocks[i] = new NumericClock(chronosList.get(i));
+
+                new ClockFrame(numericClocks);
+            }
+        });
+
+        mainFrame.add(bottomPanel);
+    }
+
 }

@@ -19,8 +19,6 @@ public abstract class Subject {
      * @param observer L'observateur à ajouter
      */
     public void addObserver(MyObserver observer) {
-        if (observer == null)
-            throw new RuntimeException("Observer is null");
         observers.push(observer);
     }
 
