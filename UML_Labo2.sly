@@ -91,7 +91,7 @@
       </role>
     </association>
     <entity entityType="CLASS" id="10967" isAbstract="true" name="ClockPanel" visibility="PUBLIC">
-      <attribute const="false" defaultValue="" isStatic="false" name="clockSize" type="int" visibility="PROTECTED"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="CLOCK_SIZE" type="int" visibility="PROTECTED"/>
       <method isAbstract="false" isStatic="false" name="getChrono" returnType="Chrono" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
     <entity entityType="CLASS" id="10900" isAbstract="false" name="Main" visibility="PUBLIC">
@@ -144,8 +144,12 @@
     <entity entityType="CLASS" id="1912" isAbstract="false" name="NumericClock" visibility="PUBLIC">
       <method isAbstract="false" isStatic="false" name="update" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
     </entity>
-    <entity entityType="CLASS" id="1911" isAbstract="false" name="ArabicClock" visibility="PUBLIC"/>
-    <entity entityType="CLASS" id="1910" isAbstract="false" name="RomanClock" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="1911" isAbstract="false" name="ArabicClock" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="IMG_PATH" type="String" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="1910" isAbstract="false" name="RomanClock" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="true" name="IMG_PATH" type="String" visibility="PRIVATE"/>
+    </entity>
     <entity entityType="CLASS" id="10308" isAbstract="true" name="Subject" visibility="PUBLIC">
       <method isAbstract="false" isStatic="false" name="notifyObservators" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="deleteObserver" returnType="void" view="DEFAULT" visibility="PUBLIC">
@@ -535,7 +539,7 @@
         <x>440</x>
         <y>880</y>
         <w>150</w>
-        <h>55</h>
+        <h>70</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="1911" displayAttributes="true" displayDefault="true" displayMethods="true">
@@ -543,7 +547,7 @@
         <x>790</x>
         <y>880</y>
         <w>150</w>
-        <h>55</h>
+        <h>70</h>
       </geometry>
     </componentView>
     <componentView color="-2079" componentID="1912" displayAttributes="true" displayDefault="true" displayMethods="true">

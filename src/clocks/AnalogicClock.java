@@ -26,7 +26,7 @@ public abstract class AnalogicClock extends ClockPanel {
     private static final int Y_POS_TITLE = 120;
     private static final int X_POS_TITLE = 75;
     private static final int MAX_MINUTES_SECONDES = 60;
-    private static final int MAX_HOURS = 24;
+    private static final int MAX_HOURS = 12;
     private static final int HOURS_NEEDLE_THICKNESS = 4;
     private static final int MINUTES_NEEDLE_THICKNESS = 3;
     private static final int SECONDES_NEEDLE_THICKNESS = 2;
@@ -50,13 +50,13 @@ public abstract class AnalogicClock extends ClockPanel {
      * @param length Longueur de l'aiguille
      * @param thickness Épaisseur de l'aiguille
      * @param time Heure de l'horloge
-     * @param cycleDuration Cycle entier des heures (24) ou minutes/secondes (60)
+     * @param cycleDuration Cycle entier des heures (12) ou minutes/secondes (60)
      */
     private void drawNeedle(Graphics2D g2d, Color color, int length, int thickness,
                             int time, int cycleDuration) {
         g2d.setColor(color);
         g2d.setStroke(new BasicStroke(thickness));
-        // position de la pointe de l'aiguille
+        // Position de la pointe de l'aiguille
         double degree = 2.0 * Math.PI * time / cycleDuration;
         int x2 = (int) (Math.sin(degree) * length);
         int y2 = (int) (-1 * Math.cos(degree) * length);
@@ -75,7 +75,7 @@ public abstract class AnalogicClock extends ClockPanel {
         g2d.drawImage(img, 0, 0, this);
         g2d.drawString("Chrono #" + getChrono().getId(), X_POS_TITLE, Y_POS_TITLE);
 
-        // centralise l'origine
+        // Centralise l'origine
         g2d.translate(CLOCK_SIZE / 2, CLOCK_SIZE / 2);
 
         drawNeedle(g2d, Color.RED, (int) (CLOCK_SIZE * 0.4), SECONDES_NEEDLE_THICKNESS,
